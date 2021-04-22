@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Topics</h1>
+<%= turbo_frame_tag 'topic_form' do %>
+  <%= render 'form', topic: @topic %><br>
+<% end %>
+
+<%= turbo_stream_from 'topics' %>
+<%= turbo_frame_tag 'topics' do %>
+  <%= render 'topic' %>
+<% end %>
+<br>
+
+
