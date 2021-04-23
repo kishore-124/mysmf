@@ -1,4 +1,26 @@
 ActiveAdmin.register Topic do
+  #customizing menu
+  #  menu label: proc{ I18n.t "mypost" }
+  # menu if: proc{ current_user.can_edit_posts? }
+  menu label: "My Topics"
+
+
+  #customizing querying
+
+  #def scoped_collection
+  #  end_of_association_chain.where(name: "test")
+  #end
+
+  #asscociatation
+  #belongs_to :user
+
+  #scope
+  #scope_to :current_user, if:     proc{ current_user.limited_access? }
+  #scope_to :current_user, unless: proc{ current_user.admin? }
+
+  #egar loding
+  #includes :author, :categories
+
   # ====================Actions=========================================================================================
   index download_links: false do
     column :name

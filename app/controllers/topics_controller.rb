@@ -1,6 +1,10 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: %i[ show edit update destroy ]
 
+
+  #Action text avoid n+1 query problem
+  # Topic.all.with_rich_text_content_and_embeds
+
   # GET /topics or /topics.json
   def index
     @topic = Topic.new
@@ -60,12 +64,12 @@ class TopicsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_topic
-      @topic = Topic.find(params[:id])
-    end
+  def set_topic
+    @topic = Topic.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def topic_params
-      params.require(:topic).permit(:name, :description)
-    end
+  def topic_params
+    params.require(:topic).permit(:name, :description, :content)
+  end
 end
